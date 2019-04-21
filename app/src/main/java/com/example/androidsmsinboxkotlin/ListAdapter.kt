@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.example.androidsmsinboxkotlin.ListAdapter.MyViewHolder
 import kotlinx.android.synthetic.main.list_item.view.*
 
-class ListAdapter(private val myDatabase: Array<String>): RecyclerView.Adapter<MyViewHolder> (){
+class ListAdapter(private val myDatabase: ArrayList<SMS>) : RecyclerView.Adapter<MyViewHolder>() {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
@@ -20,8 +20,8 @@ class ListAdapter(private val myDatabase: Array<String>): RecyclerView.Adapter<M
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.itemView.textView.text = "title"
-        holder.itemView.textView.text = "message"
+        holder.itemView.textView.text = myDatabase[position].address
+        holder.itemView.textView2.text = myDatabase[position].body
     }
 
     class MyViewHolder(itemView: View?) : RecyclerView.ViewHolder(itemView) {
@@ -32,6 +32,5 @@ class ListAdapter(private val myDatabase: Array<String>): RecyclerView.Adapter<M
         }
 
     }
-
 
 }
